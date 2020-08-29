@@ -47,6 +47,9 @@ api.add_resource(Municipios, '/municipios')
 api.add_resource(Municipios_total, '/municipios/total')
 api.add_resource(Municipios_total_datas, '/municipios/total/<data_inicio>/<data_fim>')
 
+api.add_resource(Municipios_total_estado, '/municipios/total/estado/<sigla>')
+api.add_resource(Municipios_total_estado_datas, '/municipios/total/estado/<sigla>/<data_inicio>/<data_fim>')
+
 ### Rotas Alice
 api.add_resource(metodo_get_alice, '/alice') 
 
