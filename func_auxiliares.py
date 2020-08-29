@@ -2,6 +2,7 @@ import json
 import unicodedata
 import numpy as np
 import pandas as pd
+import datetime
 
 ### Hugo
 
@@ -15,6 +16,9 @@ meses_ab_nome = '{"jan":"janeiro", "fev":"fevereiro", "mar":"março", "abr":"abr
 meses_ab_nome_json = json.loads(meses_ab_nome)
 
 meses_vetor = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"]
+
+meses_ab_nome_ingles = '{"jan":"jan", "fev":"feb", "mar":"mar", "abr":"apr", "mai":"may", "jun":"jun", "jul":"jul", "ago":"aug", "set":"sep", "out":"oct", "nov":"nov", "dez":"dec"}'
+meses_ab_nome_ingles_json = json.loads(meses_ab_nome_ingles)
 
 def converte_sigla_em_nome(sigla): 
     try:
@@ -145,6 +149,9 @@ def append_municipio(df_mun):
     result = result.append(df_mun["SP"])
     result = result.append(df_mun["SE"])
     result = result.append(df_mun["TO"])
+
+    result = concerta_coluna_data(result)
+    
     return result
 
 def agrupa_por_municipio(base_mun):
@@ -155,6 +162,37 @@ def agrupa_por_municipio(base_mun):
     new_base.columns = ['Município','Sigla UF','Região','Quant_Vítimas', 'Quant_Instâncias']
 
     return new_base
+
+def converte_data_para_timestamp(x):
+    if isinstance(x, datetime.date):
+        return x
+    else: 
+        if isinstance(x, str):
+            x = x.replace(" ","")
+            if len(x) == 7:
+                return pd.to_datetime(x, format='%m/%Y') 
+            elif len(x) == 5:
+                return pd.to_datetime(x, format='%m/%y')
+            else:
+                abrev = x[0:3]
+                resto = x[3:]
+                abrev_i = meses_ab_nome_ingles_json[abrev]
+                x = abrev_i+resto
+                if len(x) == 8:
+                    return pd.to_datetime(x, format='%b/%Y')
+                else:
+                    return pd.to_datetime(x, format='%b/%y')
+        else:
+            x_ = x.to_pydatetime()
+            return x_
+
+def concerta_coluna_data(base_mun):
+    # GO, MS, RR teve uns queridos que pararam de preencher corretamente
+    # mudaram o formato para uma string mar/2020 e antes era um datetime '2020-03-01'
+
+    base_mun["Mês/Ano"] = base_mun["Mês/Ano"].apply(lambda x: converte_data_para_timestamp(x))
+
+    return base_mun
 
 ### Alice
 
