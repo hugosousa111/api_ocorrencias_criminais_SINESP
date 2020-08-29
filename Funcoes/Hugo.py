@@ -301,8 +301,16 @@ class Hugo:
         return result
 
     def municipios_total_datas(self, data_inicio, data_fim):
-        base = append_municipio(self.df_municipio)
+        if data_inicio_eh_maior_data_fim(data_inicio, data_fim):
+            result = []
+            return result
         
+        data_inicio = converte_para_data(data_inicio)
+        data_fim = converte_para_data(data_fim)
+
+        base = append_municipio(self.df_municipio)
+
+        base = base[(base["Mês/Ano"]>=data_inicio) & (base["Mês/Ano"]<=data_fim)]
         result = agrupa_por_municipio(base)
 
         result = result.values.tolist()
