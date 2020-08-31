@@ -51,7 +51,8 @@ api.add_resource(Municipios_total_datas, '/municipios/total/<data_inicio>/<data_
 api.add_resource(metodo_get_alice, '/alice') 
 
 ### Rotas Angela
-api.add_resource(metodo_get_angela, '/angela') 
+api.add_resource(metodo_get_angela, '/angela')
+api.add_resource(Municipios_topX_vitimas, '/municipios/top/<x>')
 
 ### Rotas Fabricio
 api.add_resource(metodo_get_fabricio, '/fabricio') 
