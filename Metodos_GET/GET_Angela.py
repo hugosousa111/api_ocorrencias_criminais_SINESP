@@ -16,3 +16,12 @@ class metodo_get_angela(Resource):
             result = []
         finally:
             return jsonify(result)
+
+class Municipios_topX_vitimas(Resource):
+    def get(self, x):
+        try:
+            result = f_angela.municipios_top_x(x)
+        except:
+            result = []
+        finally:
+            return jsonify(result)
