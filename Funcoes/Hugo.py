@@ -13,6 +13,7 @@ from func_auxiliares import trata_palavra
 from func_auxiliares import data_inicio_eh_maior_data_fim
 from func_auxiliares import agrupa_por_municipio
 from func_auxiliares import append_municipio
+from func_auxiliares import concerta_coluna_data
 
 class Hugo:
     def __init__(self):
@@ -286,33 +287,8 @@ class Hugo:
         return result
 
     def municipios(self):
-        result = self.df_municipio["AC"]
-        result = result.append(self.df_municipio["AL"])
-        result = result.append(self.df_municipio["AP"])
-        result = result.append(self.df_municipio["AM"])
-        result = result.append(self.df_municipio["BA"])
-        result = result.append(self.df_municipio["CE"])
-        result = result.append(self.df_municipio["DF"])
-        result = result.append(self.df_municipio["ES"])
-        result = result.append(self.df_municipio["GO"])
-        result = result.append(self.df_municipio["MA"])
-        result = result.append(self.df_municipio["MT"])
-        result = result.append(self.df_municipio["MS"])
-        result = result.append(self.df_municipio["MG"])
-        result = result.append(self.df_municipio["PA"])
-        result = result.append(self.df_municipio["PB"])
-        result = result.append(self.df_municipio["PR"])
-        result = result.append(self.df_municipio["PE"])
-        result = result.append(self.df_municipio["PI"])
-        result = result.append(self.df_municipio["RJ"])
-        result = result.append(self.df_municipio["RN"])
-        result = result.append(self.df_municipio["RS"])
-        result = result.append(self.df_municipio["RO"])
-        result = result.append(self.df_municipio["RR"])
-        result = result.append(self.df_municipio["SC"])
-        result = result.append(self.df_municipio["SP"])
-        result = result.append(self.df_municipio["SE"])
-        result = result.append(self.df_municipio["TO"])
+        result = append_municipio(self.df_municipio)
+
         result = result.values.tolist()
         return result
 
@@ -325,4 +301,47 @@ class Hugo:
         return result
 
     def municipios_total_datas(self, data_inicio, data_fim):
-        pass
+        if data_inicio_eh_maior_data_fim(data_inicio, data_fim):
+            result = []
+            return result
+        
+        data_inicio = converte_para_data(data_inicio)
+        data_fim = converte_para_data(data_fim)
+
+        base = append_municipio(self.df_municipio)
+
+        base = base[(base["Mês/Ano"]>=data_inicio) & (base["Mês/Ano"]<=data_fim)]
+        result = agrupa_por_municipio(base)
+
+        result = result.values.tolist()
+        return result
+
+    def municipios_total_estado(self, sigla):
+        base = append_municipio(self.df_municipio)
+
+        base = base[(base["Sigla UF"] == sigla)]
+
+        result = agrupa_por_municipio(base)
+
+        result = result.values.tolist()
+        return result
+    
+    def municipios_total_estado_datas(self, sigla, data_inicio, data_fim):
+        if data_inicio_eh_maior_data_fim(data_inicio, data_fim):
+            result = []
+            return result
+        
+        data_inicio = converte_para_data(data_inicio)
+        data_fim = converte_para_data(data_fim)
+
+        base = append_municipio(self.df_municipio)
+
+        base = base[(base["Sigla UF"] == sigla)]
+        #result = agrupa_por_municipio(base)
+
+        base = base[(base["Mês/Ano"]>=data_inicio) & (base["Mês/Ano"]<=data_fim)]
+        
+        result = agrupa_por_municipio(base)
+
+        result = result.values.tolist()
+        return result

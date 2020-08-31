@@ -155,3 +155,21 @@ class Municipios_total_datas(Resource):
             result = []
         finally:
             return jsonify(result)
+
+class Municipios_total_estado(Resource):
+    def get(self, sigla):
+        try:
+            result = f_hugo.municipios_total_estado(sigla)
+        except:
+            result = []
+        finally:
+            return jsonify(result)
+
+class Municipios_total_estado_datas(Resource):
+    def get(self, sigla, data_inicio, data_fim):
+        try:
+            result = f_hugo.municipios_total_estado_datas(sigla, data_inicio, data_fim)
+        except:
+            result = []
+        finally:
+            return jsonify(result)
