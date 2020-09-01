@@ -8,6 +8,7 @@ sys.path.insert(0, '../Funcoes')
 from Funcoes.Angela import Angela
 f_angela = Angela()
 
+
 class metodo_get_angela(Resource):
     def get(self):
         try:
@@ -17,6 +18,7 @@ class metodo_get_angela(Resource):
         finally:
             return jsonify(result)
 
+
 class Municipios_topX_vitimas(Resource):
     def get(self, x):
         try:
@@ -25,3 +27,14 @@ class Municipios_topX_vitimas(Resource):
             result = []
         finally:
             return jsonify(result)
+
+
+class Municipios_topX_vitimas_periodo(Resource):
+    def get(self, x, data_inicio, data_fim):
+        try:
+            result = f_angela.municipios_top_x_periodo(x, data_inicio, data_fim)
+        except:
+            result = []
+        finally:
+            return jsonify(result)
+
