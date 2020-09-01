@@ -36,3 +36,25 @@ class Angela:
         result = result[:x]
         result = result.values.tolist()
         return result
+
+    def municipios_top_x_periodo(self, x, data_inicio, data_fim):
+        x = int(x)
+
+        if data_inicio_eh_maior_data_fim(data_inicio, data_fim):  # Se ordem das datas é passada errada
+            result = ['Erro: data inicial maior que a data final']
+            return result
+
+        data_inicio = converte_para_data(data_inicio)
+        data_fim = converte_para_data(data_fim)
+
+        baseMun = append_municipio(self.df_municipio)  # Já corrige a coluna de datas
+        baseMun = baseMun[(baseMun['Mês/Ano'] >= data_inicio) & (baseMun['Mês/Ano'] <= data_fim)]  # Pega apenas o intervalo passado por parâmetro
+        baseMun = agrupa_por_municipio(baseMun)
+
+        # Ordenando a base
+        result = baseMun.sort_values('Quant_Vítimas', ascending=False)
+
+        # Pegandos os X primeiros
+        result = result[:x]
+        result = result.values.tolist()
+        return result
