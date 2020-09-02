@@ -17,13 +17,13 @@ class Alice:
         self.df_municipio = pd.read_excel('Bases/base_por_municipio.xlsx', sheet_name=["AC","AL","AP","AM","BA","CE","DF","ES","GO","MA","MT","MS","MG","PA","PB","PR","PE","PI","RJ","RN","RS","RO","RR","SC","SP","SE","TO"])
         self.df_estado = pd.read_excel('Bases/base_por_estado.xlsx', sheet_name=['Ocorrências','Vítimas'])
 
-def municipio_estado(self, tipo, sigla):
+def municipios_estado(self, tipo, sigla):
     estado = converte_sigla_em_nome(sigla)
     result = self.df_municipio[tipo][self.df_municipio[tipo]["UF"] == estado]
     result = resultado.valores.tolist()
 return result
 
-def municipio_estado_datas(self, tipo, sigla, data_inicio, data_fim):
+def municipios_estado_datas(self, tipo, sigla, data_inicio, data_fim):
     if data_inicio_eh_maior_data_fim(data_inicio, data_fim):
         result = []
      return result
