@@ -8,7 +8,7 @@ sys.path.insert(0, '../Funcoes')
 from Funcoes.Alice import Alice
 f_alice = Alice()
         
-class Municipio_estado(Resource):
+class Municipios_estado(Resource):
     def get(self, tipo, sigla):
         try:
             result = f_alice.municipio_estado(tipo, sigla)
@@ -18,7 +18,7 @@ class Municipio_estado(Resource):
             return jsonify(result) 
         
         
-class Municipio_estado_datas(Resource):
+class Municipios_estado_datas(Resource):
     def get(self, tipo, sigla, data_inicio, data_fim):
         try:
             result = f_alice.municipio_estado_datas(tipo, sigla, data_inicio, data_fim)
