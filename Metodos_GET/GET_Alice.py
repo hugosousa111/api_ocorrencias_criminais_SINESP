@@ -11,7 +11,7 @@ f_alice = Alice()
 class Municipios_estado(Resource):
     def get(self, tipo, sigla):
         try:
-            result = f_alice.municipio_estado(tipo, sigla)
+            result = f_alice.municipios_estado(tipo, sigla)
         except:
             result = []
         finally:
@@ -21,7 +21,7 @@ class Municipios_estado(Resource):
 class Municipios_estado_datas(Resource):
     def get(self, tipo, sigla, data_inicio, data_fim):
         try:
-            result = f_alice.municipio_estado_datas(tipo, sigla, data_inicio, data_fim)
+            result = f_alice.municipios_estado_datas(tipo, sigla, data_inicio, data_fim)
         except:
             result = []
         finally:
