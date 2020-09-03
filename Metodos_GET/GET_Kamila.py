@@ -9,7 +9,7 @@ from Funcoes.Kamila import Kamila
 f_kamila = Kamila()
 
 class function23 (Resource):
-    def get(sigla, municipio):
+    def get(self, sigla, municipio):
         try:
             result = f_kamila.municipio_com_estado(sigla, municipio)
         except:
@@ -17,9 +17,9 @@ class function23 (Resource):
         finally:
             return jsonify(result)
 class function24 (Resource):
-    def get(self, sigla, data_inicio, data_fim):
+    def get(self, sigla, municipio, data_inicio, data_fim):
         try:
-            result = f_kamila.datas_municipios(self, sigla, data_inicio, data_fim)
+            result = f_kamila.datas_municipios(sigla, municipio, data_inicio, data_fim)
         except:
             result = []
         finally:
