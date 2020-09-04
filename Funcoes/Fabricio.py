@@ -1,4 +1,6 @@
 import pandas as pd
+from collections import Counter
+import datetime
 import numpy as np
 
 from func_auxiliares import converte_sigla_em_nome
@@ -20,3 +22,26 @@ class Fabricio:
     def funcao_fabricio(self):
         result = "Fabricio"
         return result
+    def Municipio_top_estado(self,X,sigla):
+        estado = self.df_municipio[sigla].values.tolist()
+        count = Counter()
+        for municipio, uf, regiao, date, vitimas in estado:
+            count.update({municipio: vitimas})
+        final = list(count.items())
+        final.sort(key=lambda x: x[1], reverse=True)
+        return final[0:X]
+    def Municipio_top_estado_periodo(self,X,sigla,data_fim,data_inicio):
+        timeStampConvert = lambda x: datetime.datetime.strptime(x, "%Y-%m-%d")
+        inicio = timeStampConvert(converte_para_data(data_fim))
+        print(type(inicio))
+        fim = timeStampConvert(converte_para_data(data_inicio))
+        print(fim)
+        estado = self.df_municipio[sigla].values.tolist()
+        estado = filter(lambda x: x[3] >= inicio and x[3] <= fim, estado)
+        estado = list(estado)
+        count = Counter()
+        for municipio, uf, regiao, date, vitimas in estado:
+            count.update({municipio: vitimas})
+        final = list(count.items())
+        final.sort(key=lambda x: x[1], reverse=True)
+        return final[0:X]

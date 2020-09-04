@@ -16,3 +16,19 @@ class metodo_get_fabricio(Resource):
             result = []
         finally:
             return jsonify(result)
+class Municipios_top_estado(Resource):
+    def get(self,X,sigla):
+        try:
+            result = f_fabricio.Municipio_top_estado(X,sigla)
+        except:
+            result = []
+        finally:
+            return jsonify(result)
+class Municipios_top_estado_por_periodo:
+    def get(self,X,sigla,data_fim,data_inicio):
+        try:
+            result = f_fabricio.Municipio_top_estado(X,sigla)
+        except:
+            result = []
+        finally:
+            return jsonify(result)
