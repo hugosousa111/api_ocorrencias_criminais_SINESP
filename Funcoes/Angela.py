@@ -20,10 +20,6 @@ class Angela:
         self.df_estado = pd.read_excel('Bases/base_por_estado.xlsx', sheet_name=['Ocorrências','Vítimas'])
 
     # Metodo Modelo/Teste
-    def funcao_angela(self):
-        result = "Angela"
-        return result
-
     def municipios_top_x(self, x):
         x = int(x)
         baseMun = append_municipio(self.df_municipio)

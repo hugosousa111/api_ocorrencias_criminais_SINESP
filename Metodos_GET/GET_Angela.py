@@ -9,16 +9,6 @@ from Funcoes.Angela import Angela
 f_angela = Angela()
 
 
-class metodo_get_angela(Resource):
-    def get(self):
-        try:
-            result = f_angela.funcao_angela()
-        except:
-            result = []
-        finally:
-            return jsonify(result)
-
-
 class Municipios_topX_vitimas(Resource):
     def get(self, x):
         try:

@@ -56,7 +56,6 @@ api.add_resource(Municipios_estado, '/municipios/estado/<sigla>')
 api.add_resource(Municipios_estado_datas, '/municipios/estado/<sigla>/<data_inicio>/<data_fim>')
 
 ### Rotas Angela
-api.add_resource(metodo_get_angela, '/angela')
 api.add_resource(Municipios_topX_vitimas, '/municipios/top/<x>')
 api.add_resource(Municipios_topX_vitimas_periodo, '/municipios/top/<x>/<data_inicio>/<data_fim>')
 
