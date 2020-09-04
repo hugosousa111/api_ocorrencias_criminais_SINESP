@@ -8,10 +8,19 @@ sys.path.insert(0, '../Funcoes')
 from Funcoes.Renato import Renato
 f_renato = Renato()
 
-class metodo_get_renato(Resource):
-    def get(self):
+class Municipios_regiao(Resource):
+    def get(self, regiao):
         try:
-            result = f_renato.funcao_renato()
+            result = f_renato.municipios_regiao(regiao)
+        except:
+            result = []
+        finally:
+            return jsonify(result)
+
+class Municipios_regiao_datas(Resource):
+    def get(self, regiao, data_inicio, data_fim):
+        try:
+            result = f_renato.municipios_regiao_datas(regiao, data_inicio, data_fim)
         except:
             result = []
         finally:

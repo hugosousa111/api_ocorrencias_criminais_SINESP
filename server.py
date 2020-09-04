@@ -67,8 +67,8 @@ api.add_resource(function23, '/municipios/estado/municipio/<sigla>/<municipio>')
 api.add_resource(function24, '/municipios/estado/municipio/<sigla>/<municipio>/<data_inicio>/<data_fim>')
 
 ### Rotas Renato
-api.add_resource(metodo_get_renato, '/renato') 
-
+api.add_resource(Municipios_regiao, '/municipios/regiao/<regiao>')
+api.add_resource(Municipios_regiao_datas, '/municipios/regiao/<regiao>/<data_inicio>/<data_fim>')
 ### Rotas Thiago
 api.add_resource(metodo_get_thiago, '/thiago') 
 
