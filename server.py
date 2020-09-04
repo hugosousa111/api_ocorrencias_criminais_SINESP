@@ -63,7 +63,7 @@ api.add_resource(Municipios_topX_vitimas_periodo, '/municipios/top/<x>/<data_ini
 
 ### Rotas Fabricio
 api.add_resource(Municipios_top_estado, '/municipios/top/estado/<X>/<sigla>')
-api.add_resource(Municipios_top_estado_por_periodo, '/municipios/top/estado/<X>/<sigla>/<data_fim>/<data_inicio>')
+api.add_resource(Municipios_top_estado_por_periodo, '/municipios/top/estado/<X>/<sigla>/<data_inicio>/<data_fim>')
 
 ### Rotas Kamila
 api.add_resource(function23, '/municipios/estado/municipio/<sigla>/<municipio>') 
