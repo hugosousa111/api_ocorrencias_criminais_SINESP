@@ -18,10 +18,6 @@ class Fabricio:
         self.df_municipio = pd.read_excel('Bases/base_por_municipio.xlsx', sheet_name=["AC","AL","AP","AM","BA","CE","DF","ES","GO","MA","MT","MS","MG","PA","PB","PR","PE","PI","RJ","RN","RS","RO","RR","SC","SP","SE","TO"])
         self.df_estado = pd.read_excel('Bases/base_por_estado.xlsx', sheet_name=['Ocorrências','Vítimas'])
 
-    # Metodo Modelo/Teste
-    def funcao_fabricio(self):
-        result = "Fabricio"
-        return result
     def Municipio_top_estado(self,X,sigla):
         estado = self.df_municipio[sigla].values.tolist()
         count = Counter()
@@ -30,6 +26,7 @@ class Fabricio:
         final = list(count.items())
         final.sort(key=lambda x: x[1], reverse=True)
         return final[0:X]
+        
     def Municipio_top_estado_periodo(self,X,sigla,data_fim,data_inicio):
         timeStampConvert = lambda x: datetime.datetime.strptime(x, "%Y-%m-%d")
         inicio = timeStampConvert(converte_para_data(data_fim))

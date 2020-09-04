@@ -24,10 +24,10 @@ class Municipios_top_estado(Resource):
             result = []
         finally:
             return jsonify(result)
-class Municipios_top_estado_por_periodo:
+class Municipios_top_estado_por_periodo(Resource):
     def get(self,X,sigla,data_fim,data_inicio):
         try:
-            result = f_fabricio.Municipio_top_estado(X,sigla)
+            result = f_fabricio.Municipio_top_estado_periodo(X,sigla,data_fim,data_inicio)
         except:
             result = []
         finally:
