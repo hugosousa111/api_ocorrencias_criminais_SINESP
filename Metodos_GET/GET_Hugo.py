@@ -173,3 +173,12 @@ class Municipios_total_estado_datas(Resource):
             result = []
         finally:
             return jsonify(result)
+
+class Atualiza_bases(Resource):
+    def get(self):
+        try:
+            result = f_hugo.atualiza_bases()
+        except:
+            result = ["ERRO ATUALIZACAO"]
+        finally:
+            return jsonify(result)

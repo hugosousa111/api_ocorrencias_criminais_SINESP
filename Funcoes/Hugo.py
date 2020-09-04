@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
 
+from download_df import download
+
 from func_auxiliares import converte_sigla_em_nome
 from func_auxiliares import pega_mes
 from func_auxiliares import pega_ano
@@ -345,3 +347,7 @@ class Hugo:
 
         result = result.values.tolist()
         return result
+
+    def atualiza_bases(self):
+        download() #download das bases
+        return ["Bases Atualizadas"]

@@ -50,6 +50,8 @@ api.add_resource(Municipios_total_datas, '/municipios/total/<data_inicio>/<data_
 api.add_resource(Municipios_total_estado, '/municipios/total/estado/<sigla>')
 api.add_resource(Municipios_total_estado_datas, '/municipios/total/estado/<sigla>/<data_inicio>/<data_fim>')
 
+api.add_resource(Atualiza_bases, '/atualiza')
+
 ### Rotas Alice
 # Base dividida por municipios
 api.add_resource(Municipios_estado, '/municipios/estado/<sigla>')
