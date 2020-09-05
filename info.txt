@@ -1,7 +1,7 @@
 Informações sobre instalação 
 Instalar o Python3
 
-Bibliotecas Instalação (Linux)
+Bibliotecas Instalação (Linux) ou sudo pip3 ... Permissão de root 
     pip3 install flask flask-jsonpify flask-restful
     pip3 install pandas
     pip3 install xlrd

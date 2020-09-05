@@ -5,11 +5,11 @@ from flask_restful import Api
 Para atualizar as bases utilize a rota get-> /atualiza
 '''
 
-# Roda mais rápido (Debug False) e live reload
+'''
 #Ambiente de Development
 class DevelopmentConfig(object):
     ENV = 'development'
-    DEBUG = False
+    DEBUG = True #live reload
 
 app = Flask(__name__)
 app.config.from_object(DevelopmentConfig)
@@ -17,11 +17,11 @@ api = Api(app)
 
 # Ou roda assim:
 #env FLASK_ENV=development FLASK_APP=server.py flask run
-
 '''
+
 app = Flask(__name__)
 api = Api(app)
-'''
+
 
 # Metodos GET da API
 from Metodos_GET.GET_Alice import *
@@ -89,4 +89,5 @@ api.add_resource(Municipios_regiao_datas, '/municipios/regiao/<regiao>/<data_ini
 api.add_resource(metodo_get_thiago, '/thiago') 
 
 if __name__ == '__main__':
+    #app.run(host="localhost", port=80) # sudo python3 server.py
     app.run(host="localhost", port=3000)
