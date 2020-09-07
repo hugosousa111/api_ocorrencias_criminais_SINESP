@@ -51,12 +51,12 @@
 # Padronização da sintaxe das rotas:
 
 1. Estados: <br/>
-    Os estados devem ser passados com sua respectiva sigla e em maiúsculo: </br>
+    Os estados devem ser passados com sua respectiva sigla e em maiúsculo: <b/r>
     "/CE/" <br/>
 
 
 2. Datas: <br/>
-    Datas devem ser passadas no formato "mês abreviado" + "-" + "ano": </br>
+    Datas devem ser passadas no formato "mês abreviado" + "-" + "ano": <br/>
     "fev-2019" <br/>
     
 
@@ -68,7 +68,7 @@
 4. Nomes de Crimes e Cidades: <br/>
     Nas rotas quando o crime/cidade for formado por duas ou mais palavras, usar "_" para separá-las <br/>
     "/Cruzeiro_do_Sul/" <br/>
-    "/Roubo_seguido_de_morte_(latrocínio)/" </br>
+    "/Roubo_seguido_de_morte_(latrocínio)/" <br/>
     
 
 5. Datas passadas na ordem invertidas, o retorno é um []: <br/>
