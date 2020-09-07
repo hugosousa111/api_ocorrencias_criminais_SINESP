@@ -1,11 +1,11 @@
-# Arquivos e Pastas: 
+# Arquivos e Pastas do Projeto: 
 
 /info.txt   
-- Informações sobre instalação de bibliotecas e outros
+- Contém informações sobre instalação de bibliotecas e outros
 
 /server.py  
 - Arquivo principal, que une tudo e roda o servidor flask
-- Só é necessário executar esse arquivo
+- Basta executar apenas esse arquivo
 
 /download_df.py 
 - Arquivo que faz o download das bases direto do site
@@ -22,23 +22,19 @@
 
 /Bases/ 
 - Nessa pasta estão as duas bases de dados(formato xlsx)
-- cada arquivo, é separado por páginas:
+- Cada arquivo, é separado por páginas:
     - Base por estados: Ocorrências e Vítimas
-    - Base por Municípios: siglas dos estados
+    - Base por Municípios: Siglas dos Estados
 
 /Metodos_GET/   
-- Nesta pasta, tem um arquivo para cada pessoa editar
-- Nesse arquivo, só deve ter as classes e os métodos GET
+- Nesse arquivo, deve conter apenas as classes e os métodos GET
 - Cada método GET, chama uma função da pasta /Funcoes/
 
 /Funcoes/   
-- Nesta pasta, tem um arquivo para cada pessoa editar
 - Nesse arquivo deve ser adicionado a função que o GET chama
-- É aqui que são realizadas as manipulações de dados das bases
+- É aqui que são realizadas as manipulações de dados das bases para cada requisição à API
 
-# O que alterar?
-
-Quando as funções forem divididas para cada integrante: 
+<!---# O que alterar?
 
 - No arquivo server.py, na sessão com seu nome, inserir as rotas das suas funções
 
@@ -50,44 +46,32 @@ Quando as funções forem divididas para cada integrante:
 
 - Caso precise, crie outros arquivos
 
-- Criei uma rota pra cada um, que é o seu nome, só pra testar
+- Criei uma rota pra cada um, que é o seu nome, só pra testar-->
 
-# Padronização das rotas (e outras coisas):
+# Padronização da sintaxe das rotas:
 
 1. Estados: <br/>
-    Sempre que nas rotas(url) tiver que passar um estado, sempre usar siglas em maiúsculo<br/>
-    Exemplo: "/CE/"<br/>
-    A função "converte_sigla_em_nome" converte no uma sigla em nome do estado<br/>
+    Os estados devem ser passados com sua respectiva sigla e em maiúsculo:
+    "/CE/"<br/>
 
 2. Datas:<br/>
-    Nas rotas usar o formato "jan-2019", mês abreviado e separado por "-"<br/>
-    Exemplo: "fev-2019"<br/>
-    Usar funções:<br/>
+    Datas devem ser passadas no formato "mês abreviado" + "-" + "ano"
+    "fev-2019"<br/>
+    <!---Usar funções:<br/>
     "pega_mes" para converter a string "jan-2019" em "janeiro" (Para base de estados)<br/>
     "pega_ano" para converter a string "jan-2019" em "2019" (Para base de estados)<br/>
-    "converte_para_data" para converter a string "jan-2019" em "2019-01-01" (Para base de cidades) (Não ta pronto)<br/>
+    "converte_para_data" para converter a string "jan-2019" em "2019-01-01" (Para base de cidades)<br/>-->
     
 3. Ordem das Datas: <br/>
-        Sempre que usar datas, colocar primeiro a data inicial e depois a data final, incluir na busca os meses de inicio e fim<br/>
-        Exemplo: /jan-2017/ago-2019/ <br/>
-                Uma busca de janeiro de 2017 até agosto de 2019<br/>
+    Sempre que usar datas, pasar primeiro a data inicial e depois a data final, incluindo na busca os meses de inicio e fim<br/>
+    "/jan-2017/ago-2019/" <br/>
+
 
 4. Nomes de Crimes e Cidades:<br/>
-    Nas rotas quando o crime/cidade for formado por duas ou mais palavras, usar "-" para separa-las <br/>
-    Exemplo: para a cidade "Cruzeiro do Sul" -> /Cruzeiro-do-Sul/<br/>
-    Na url o nome do crime deve ser o mesmo que o desejado para a busca, Podendo variar entre maiúsculas e minúsculas, acentuadas e não acentuadas<br/>
-    Exemplo: Para o crime "Roubo seguido de morte (latrocínio)" são aceitos os formatos:
-    - /Roubo-seguido-de-morte-(latrocínio)/
-    - /ROUBO-segUIdo-de-mORte-(latrocinio)/
-    - /Roubo-seguido-de-mórté-(látrócínío)/
-    - /Roubo-seguido-de-morte-(latricinio)/<br/>
-    E outras variações<br/>
-    Usar as funções:<br/>
-    "trata_palavra", que retorna a palavra com espaços no lugar de "-", sem acentos, e minúscula<br/>
-    "trata_vetor_palavra", que aplica a função "trata_palavra" para todas as palavras de um vetor, e retorna um array<br/>
+    Nas rotas quando o crime/cidade for formado por duas ou mais palavras, usar "_" para separá-las <br/>
+    "/Cruzeiro_do_Sul/"<br/>
+    "/Roubo_seguido_de_morte_(latrocínio)/"
+    
 
-5. Se as datas estiverem invertidas na url, retornar = []<br/>
-    Exemplo: /jan-2020/fev-2019/<br/>
-
-6. Quando houver erros na url, evitar erros no código que retornam: Internal Server Error: 500<br/>
-    Usar try,except nos métodos GET, para sempre que der algo errado retornar = []<br/>
+5. Datas passadas na ordem invertidas, o retorno é um []<br/>
+    "/jan-2020/fev-2019/"<br/>
