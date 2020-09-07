@@ -49,6 +49,18 @@ FileZilla
     (Só precisa colocar os arquivos necessários (.git, _pycache_, .vscode, não precisa))
 
 
-cd TrabDS
-sudo python3 server.py
+Para Rodar
+    cd TrabDS
+    sudo python3 server.py
 
+Para deixar rodando depois que fechar a tela
+    Screen -> sudo apt-get install screen
+    screen -l
+    cd TrabDS
+    sudo python3 server.py
+    E pode fechar o terminal do Putty
+
+    Para encerrar o processo do server.py
+        Abrir o putty
+        Mostrar os screen que existem (se quiser): screen -ls 
+        Entra no screen (quando só tem 1): screen -r
