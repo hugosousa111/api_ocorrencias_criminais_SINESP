@@ -51,27 +51,25 @@
 # Padronização da sintaxe das rotas:
 
 1. Estados: <br/>
-    Os estados devem ser passados com sua respectiva sigla e em maiúsculo:
-    "/CE/"<br/>
+    Os estados devem ser passados com sua respectiva sigla e em maiúsculo: </br>
+    "/CE/" <br/>
 
-2. Datas:<br/>
-    Datas devem ser passadas no formato "mês abreviado" + "-" + "ano"
-    "fev-2019"<br/>
-    <!---Usar funções:<br/>
-    "pega_mes" para converter a string "jan-2019" em "janeiro" (Para base de estados)<br/>
-    "pega_ano" para converter a string "jan-2019" em "2019" (Para base de estados)<br/>
-    "converte_para_data" para converter a string "jan-2019" em "2019-01-01" (Para base de cidades)<br/>-->
+
+2. Datas: <br/>
+    Datas devem ser passadas no formato "mês abreviado" + "-" + "ano": </br>
+    "fev-2019" <br/>
     
+
 3. Ordem das Datas: <br/>
-    Sempre que usar datas, pasar primeiro a data inicial e depois a data final, incluindo na busca os meses de inicio e fim<br/>
+    Sempre que usar datas, pasar primeiro a data inicial e depois a data final, incluindo na busca os meses de início e fim: <br/>
     "/jan-2017/ago-2019/" <br/>
 
 
-4. Nomes de Crimes e Cidades:<br/>
+4. Nomes de Crimes e Cidades: <br/>
     Nas rotas quando o crime/cidade for formado por duas ou mais palavras, usar "_" para separá-las <br/>
-    "/Cruzeiro_do_Sul/"<br/>
-    "/Roubo_seguido_de_morte_(latrocínio)/"
+    "/Cruzeiro_do_Sul/" <br/>
+    "/Roubo_seguido_de_morte_(latrocínio)/" </br>
     
 
-5. Datas passadas na ordem invertidas, o retorno é um []<br/>
+5. Datas passadas na ordem invertidas, o retorno é um []: <br/>
     "/jan-2020/fev-2019/"<br/>
