@@ -89,5 +89,5 @@ api.add_resource(Municipios_regiao_datas, '/municipios/regiao/<regiao>/<data_ini
 api.add_resource(metodo_get_thiago, '/thiago') 
 
 if __name__ == '__main__':
-    #app.run(host="localhost", port=80) # sudo python3 server.py
+    #app.run(host="0.0.0.0", port=80) # sudo python3 server.py
     app.run(host="localhost", port=3000)
