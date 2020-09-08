@@ -1,7 +1,7 @@
-- Instalei o FileZilla
-- Instalei o PuTTY 
+- Instalar o FileZilla
+- Instalar o PuTTY 
 
-- No linux(Ubuntu), instalei também o PuTTYgen:
+- No linux(Ubuntu), instalar também o PuTTYgen:
     sudo apt install putty-tools
 - No Windows, não precisa
 
