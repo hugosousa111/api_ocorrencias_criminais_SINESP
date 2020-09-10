@@ -21,11 +21,12 @@ class Alice:
     def municipios_estado(self, tipo, sigla):
         estado = converte_sigla_em_nome(sigla)
         result = self.df_municipio[tipo][self.df_municipio[tipo]["UF"] == estado]
-        result = resultado.valores.tolist()
+        result = result.valores.tolist()
         return result
         
         #FUNÇÃO 21
     def municipios_estado_datas(self, tipo, sigla, data_inicio, data_fim):
+        #Verifica se a data informada é válida
         if data_inicio_eh_maior_data_fim(data_inicio, data_fim):
             result = []
         return result
