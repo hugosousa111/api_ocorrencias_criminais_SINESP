@@ -51,7 +51,7 @@
 
 3. Ordem das Datas:
     
-- Sempre que usar datas, pasar primeiro a data inicial e depois a data final, incluindo na busca os meses de início e fim:
+- Sempre que usar datas, passar primeiro a data inicial e depois a data final, incluindo na busca os meses de início e fim:
     - "/jan-2017/ago-2019/"
 
 
