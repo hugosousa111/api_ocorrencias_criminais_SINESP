@@ -11,6 +11,7 @@ from func_auxiliares import pega_meses_intervalo
 from func_auxiliares import trata_vetor_palavra
 from func_auxiliares import trata_palavra
 from func_auxiliares import data_inicio_eh_maior_data_fim
+from func_auxiliares import append_municipio
 
 class Alice:
     def __init__(self):
@@ -23,7 +24,7 @@ class Alice:
 
         base = base[(base["Sigla UF"] == sigla)]
 
-        result = base.valores.tolist()
+        result = base.values.tolist()
         return result
         
         #FUNÇÃO 22
@@ -31,7 +32,7 @@ class Alice:
         #Verifica se a data informada é válida
         if data_inicio_eh_maior_data_fim(data_inicio, data_fim):
             result = []
-        return result
+            return result
 
         data_inicio = converte_para_data(data_inicio)
         data_fim = converte_para_data(data_fim)
