@@ -22,9 +22,7 @@ class Municipios_estado_datas(Resource):
     def get(self, sigla, data_inicio, data_fim):
         try:
             result = f_alice.municipios_estado_datas(sigla, data_inicio, data_fim)
-            print("entrou")
         except:
             result = []
-            print("deu erro")
         finally:
             return jsonify(result)         

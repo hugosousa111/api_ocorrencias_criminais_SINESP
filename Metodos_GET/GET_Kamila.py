@@ -8,7 +8,7 @@ sys.path.insert(0, '../Funcoes')
 from Funcoes.Kamila import Kamila
 f_kamila = Kamila()
 
-class function23 (Resource):
+class Municipio_com_Estado (Resource):
     def get(self, sigla, municipio):
         try:
             result = f_kamila.municipio_com_estado(sigla, municipio)
@@ -16,7 +16,7 @@ class function23 (Resource):
             result = []
         finally:
             return jsonify(result)
-class function24 (Resource):
+class Municipio_com_Estado_datas (Resource):
     def get(self, sigla, municipio, data_inicio, data_fim):
         try:
             result = f_kamila.datas_municipios(sigla, municipio, data_inicio, data_fim)
