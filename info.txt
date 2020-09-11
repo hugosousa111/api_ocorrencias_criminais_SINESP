@@ -6,7 +6,7 @@ Bibliotecas Instalação (Linux) ou sudo pip3 ... Permissão de root
     pip3 install pandas
     pip3 install xlrd
 
-* Não precisei instalar, mas deve ter que instalar no servidor AWS (Ou no seu pc)
+* Não precisei instalar, mas deve ter que instalar no servidor AWS (ou no seu computador)
 - pandas
 - numpy
 - json
@@ -16,6 +16,6 @@ Bibliotecas Instalação (Linux) ou sudo pip3 ... Permissão de root
 Para rodar a api: python3 server.py
 
 ###
-Derrumar um processo em uma porta (Linux)
+Derrubar um processo em uma porta (Linux)
 lsof -i :PORT #pesquiso
 kill -9 PID #kill

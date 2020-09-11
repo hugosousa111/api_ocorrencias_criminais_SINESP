@@ -9,9 +9,9 @@ from Funcoes.Alice import Alice
 f_alice = Alice()
         
 class Municipios_estado(Resource):
-    def get(self, tipo, sigla):
+    def get(self, sigla):
         try:
-            result = f_alice.municipios_estado(tipo, sigla)
+            result = f_alice.municipios_estado(sigla)
         except:
             result = []
         finally:
@@ -19,10 +19,12 @@ class Municipios_estado(Resource):
         
         
 class Municipios_estado_datas(Resource):
-    def get(self, tipo, sigla, data_inicio, data_fim):
+    def get(self, sigla, data_inicio, data_fim):
         try:
-            result = f_alice.municipios_estado_datas(tipo, sigla, data_inicio, data_fim)
+            result = f_alice.municipios_estado_datas(sigla, data_inicio, data_fim)
+            print("entrou")
         except:
             result = []
+            print("deu erro")
         finally:
             return jsonify(result)         
