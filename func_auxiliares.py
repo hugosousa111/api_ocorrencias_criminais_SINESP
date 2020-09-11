@@ -4,8 +4,6 @@ import numpy as np
 import pandas as pd
 import datetime
 
-### Hugo
-
 estados = '{"AC": "Acre","AL": "Alagoas","AP": "Amapá","AM": "Amazonas","BA": "Bahia","CE": "Ceará","DF": "Distrito Federal","ES": "Espírito Santo","GO": "Goiás","MA": "Maranhão","MT": "Mato Grosso","MS": "Mato Grosso do Sul","MG": "Minas Gerais","PA": "Pará","PB": "Paraíba","PR": "Paraná","PE": "Pernambuco","PI": "Piauí","RJ": "Rio de Janeiro","RN": "Rio Grande do Norte","RS": "Rio Grande do Sul","RO": "Rondônia","RR": "Roraima","SC": "Santa Catarina","SP": "São Paulo","SE": "Sergipe","TO": "Tocantins"}'
 estados_json = json.loads(estados)
 
@@ -187,7 +185,7 @@ def converte_data_para_timestamp(x):
             return x_
 
 def concerta_coluna_data(base_mun):
-    # GO, MS, RR teve uns queridos que pararam de preencher corretamente
+    # GO, MS, RR algumas instâncias pararam de preencher corretamente
     # mudaram o formato para uma string mar/2020 e antes era um datetime '2020-03-01'
 
     base_mun["Mês/Ano"] = base_mun["Mês/Ano"].apply(lambda x: converte_data_para_timestamp(x))
@@ -206,15 +204,3 @@ def agrupa_por_estado(df_e,nome):
     new_base.columns = ['UF', 'Tipo Crime',nome, 'Quant_Instâncias']
 
     return new_base
-
-### Alice
-
-### Angela
-
-### Fabricio
-
-### Kamila
-
-### Renato
-
-### Thiago
