@@ -86,7 +86,8 @@ api.add_resource(function24, '/municipios/estado/municipio/<sigla>/<municipio>/<
 api.add_resource(Municipios_regiao, '/municipios/regiao/<regiao>')
 api.add_resource(Municipios_regiao_datas, '/municipios/regiao/<regiao>/<data_inicio>/<data_fim>')
 ### Rotas Thiago
-api.add_resource(metodo_get_thiago, '/thiago') 
+api.add_resource(estado_topX_ocorrencias, '/estados_ocorrencias/top/crime/<x>/<crime>') 
+api.add_resource(estado_topX_vitimas, '/estados_vitimas/top/crime/<x>/<crime>')
 
 if __name__ == '__main__':
     #app.run(host="0.0.0.0", port=80) # sudo python3 server.py

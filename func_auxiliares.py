@@ -194,6 +194,19 @@ def concerta_coluna_data(base_mun):
 
     return base_mun
 
+def agrupa_por_estado(df_e,nome):
+
+    del df_e['Mês']
+    del df_e['Ano']
+
+    new_base = df_e.groupby(['UF', 'Tipo Crime']).agg(['sum', 'count']).reset_index()
+
+    new_base.columns = new_base.columns.droplevel()
+
+    new_base.columns = ['UF', 'Tipo Crime',nome, 'Quant_Instâncias']
+
+    return new_base
+
 ### Alice
 
 ### Angela
