@@ -7,20 +7,22 @@ from func_auxiliares import *
 
 class Func_Estados:
     def __init__(self):
-        self.df_municipio = pd.read_excel('Bases/base_por_municipio.xlsx', sheet_name=["AC","AL","AP","AM","BA","CE","DF","ES","GO","MA","MT","MS","MG","PA","PB","PR","PE","PI","RJ","RN","RS","RO","RR","SC","SP","SE","TO"])
         self.df_estado = pd.read_excel('Bases/base_por_estado.xlsx', sheet_name=['Ocorrências','Vítimas'])
 
+    # Funcao 01/09
     def estados(self, tipo):
         result = self.df_estado[tipo]
         result = result.values.tolist()
         return result
 
+    # Funcao 02/10
     def estados_estado(self, tipo, sigla):
         estado = converte_sigla_em_nome(sigla)
         result = self.df_estado[tipo][self.df_estado[tipo]["UF"] == estado]
         result = result.values.tolist()
         return result
     
+    # Funcao 03/11
     def estados_estado_datas(self, tipo, sigla, data_inicio, data_fim):
         if data_inicio_eh_maior_data_fim(data_inicio, data_fim):
             result = []
@@ -93,6 +95,7 @@ class Func_Estados:
         result = result.values.tolist()
         return result
 
+    # Funcao 04/12
     def estados_crime(self, tipo, crime):
         palavras_tratadas = trata_vetor_palavra(self.df_estado[tipo]["Tipo Crime"])
         palavra = trata_palavra(crime)
@@ -102,6 +105,7 @@ class Func_Estados:
         result = result.values.tolist()
         return result
 
+    # Funcao 05/13
     def estados_crime_datas(self, tipo, crime, data_inicio, data_fim):
         if data_inicio_eh_maior_data_fim(data_inicio, data_fim):
             result = []
@@ -176,6 +180,7 @@ class Func_Estados:
         result = result.values.tolist()
         return result
 
+    # Funcao 06/14
     def estados_estado_crime(self, tipo, sigla, crime):
         crimes_tratados = trata_vetor_palavra(self.df_estado[tipo]["Tipo Crime"])
         crime = trata_palavra(crime)
@@ -194,6 +199,7 @@ class Func_Estados:
         result = result.values.tolist()
         return result
     
+    # Funcao 07/15
     def estados_estado_crime_datas(self, tipo, sigla, crime, data_inicio, data_fim):
         if data_inicio_eh_maior_data_fim(data_inicio, data_fim):
             result = []
@@ -276,6 +282,7 @@ class Func_Estados:
         result = result.values.tolist()
         return result
 
+    # Funcao 08/16
     def estado_top_x(self,tipo, x,crime):
         if tipo == "Vítimas":
             coluna_tipo = "Quant_Vítimas"
@@ -300,6 +307,7 @@ class Func_Estados:
 
         return result
     
+    # Atualiza Bases
     def atualiza_bases(self):
         download() #download das bases
         return ["Bases Atualizadas"]

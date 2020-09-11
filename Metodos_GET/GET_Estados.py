@@ -11,6 +11,7 @@ f = Func_Estados()
 ocorrencias = "Ocorrências"
 vitimas = "Vítimas"
 
+# Função 01
 class Est_ocorrencias(Resource):
     def get(self):
         try:
@@ -20,6 +21,7 @@ class Est_ocorrencias(Resource):
         finally:
             return jsonify(result)
 
+# Função 02
 class Est_ocorrencias_estado(Resource):
     def get(self, sigla):
         try:
@@ -29,6 +31,7 @@ class Est_ocorrencias_estado(Resource):
         finally:
             return jsonify(result)
 
+# Função 03
 class Est_ocorrencias_estado_datas(Resource):
     def get(self, sigla, data_inicio, data_fim):
         try:
@@ -38,6 +41,7 @@ class Est_ocorrencias_estado_datas(Resource):
         finally:
             return jsonify(result)
 
+# Função 04
 class Est_ocorrencias_crime(Resource):
     def get(self, crime):
         try:
@@ -47,6 +51,7 @@ class Est_ocorrencias_crime(Resource):
         finally:
             return jsonify(result)
 
+# Função 05
 class Est_ocorrencias_crime_datas(Resource):
     def get(self, crime, data_inicio, data_fim):
         try:
@@ -56,6 +61,7 @@ class Est_ocorrencias_crime_datas(Resource):
         finally:
             return jsonify(result)
 
+# Função 06
 class Est_ocorrencias_estado_crime(Resource):
     def get(self, sigla, crime):
         try:
@@ -65,6 +71,7 @@ class Est_ocorrencias_estado_crime(Resource):
         finally:
             return jsonify(result)
 
+# Função 07
 class Est_ocorrencias_estado_crime_datas(Resource):
     def get(self, sigla, crime, data_inicio, data_fim):
         try:
@@ -74,6 +81,17 @@ class Est_ocorrencias_estado_crime_datas(Resource):
         finally:
             return jsonify(result)
 
+# Função 08
+class estado_topX_ocorrencias(Resource):
+    def get(self,x,crime):
+        try:
+            result = f.estado_top_x(ocorrencias, x,crime)
+        except:
+            result = []
+        finally:
+            return jsonify(result)
+
+# Função 09
 class Est_vitimas(Resource):
     def get(self):
         try:
@@ -83,6 +101,7 @@ class Est_vitimas(Resource):
         finally:
             return jsonify(result)
 
+# Função 10
 class Est_vitimas_estado(Resource):
     def get(self, sigla):
         try:
@@ -92,6 +111,7 @@ class Est_vitimas_estado(Resource):
         finally:
             return jsonify(result)
 
+# Função 11
 class Est_vitimas_estado_datas(Resource):
     def get(self, sigla, data_inicio, data_fim):
         try:
@@ -101,6 +121,7 @@ class Est_vitimas_estado_datas(Resource):
         finally:
             return jsonify(result)
 
+# Função 12
 class Est_vitimas_crime(Resource):
     def get(self, crime):
         try:
@@ -110,6 +131,7 @@ class Est_vitimas_crime(Resource):
         finally:
             return jsonify(result)
 
+# Função 13
 class Est_vitimas_crime_datas(Resource):
     def get(self, crime, data_inicio, data_fim):
         try:
@@ -119,6 +141,7 @@ class Est_vitimas_crime_datas(Resource):
         finally:
             return jsonify(result)
 
+# Função 14
 class Est_vitimas_estado_crime(Resource):
     def get(self, sigla, crime):
         try:
@@ -128,6 +151,7 @@ class Est_vitimas_estado_crime(Resource):
         finally:
             return jsonify(result)
 
+# Função 15
 class Est_vitimas_estado_crime_datas(Resource):
     def get(self, sigla, crime, data_inicio, data_fim):
         try:
@@ -137,24 +161,17 @@ class Est_vitimas_estado_crime_datas(Resource):
         finally:
             return jsonify(result)
 
-class estado_topX_ocorrencias(Resource):
-    def get(self,x,crime):
-        try:
-            result = f.estado_top_x("Ocorrências", x,crime)
-        except:
-            result = []
-        finally:
-            return jsonify(result)
-
+# Função 16
 class estado_topX_vitimas(Resource):
     def get(self,x,crime):
         try:
-            result = f.estado_top_x("Vítimas",x,crime)
+            result = f.estado_top_x(vitimas,x,crime)
         except:
             result = []
         finally:
             return jsonify(result)
 
+# Atualiza
 class Atualiza_bases(Resource):
     def get(self):
         try:

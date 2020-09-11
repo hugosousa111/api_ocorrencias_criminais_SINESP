@@ -19,3 +19,73 @@ Para rodar a api: python3 server.py
 Derrubar um processo em uma porta (Linux)
 lsof -i :PORT #pesquiso
 kill -9 PID #kill
+
+
+#######################  AWS   #####################################
+
+- Instalar o FileZilla
+- Instalar o PuTTY 
+
+- No linux(Ubuntu), instalar também o PuTTYgen:
+    sudo apt install putty-tools
+- No Windows, não precisa
+
+- Criar servidor Ubuntu no AWS Educate
+    add rule type HTTP, protocol TCP, port 80
+
+- Gerar o .ppk apartir do .pem gerado no site da AWS_educate
+    - Linux(Ubuntu):
+        - sudo puttygen aws-ds.pem -o aws-ds.ppk -O private
+        - sudo chmod 777 aws-ds.ppk
+    - Windows: 
+        - Seguir passos do vídeo (PuTTYgen)
+
+- Copiar a public DNS
+- No PuTTY, na parte de Host Name: 
+    - ubuntu@ec2-54-87-204-215.c......
+
+- Connection/SSH/Auth e Browse a chave .ppk
+
+- Salvar a sessão se quiser
+
+- Open
+
+sudo apt-get update
+sudo apt install python3-pip
+
+sudo pip3 install flask flask-jsonpify flask-restful
+sudo pip3 install pandas
+sudo pip3 install xlrd
+
+
+FileZilla
+    Abrir o gerenciador de sites
+    New site
+    Protocol: SFTP 
+    Host: ec2-54-87-204.......
+
+    Tipo de Logon: Arquivo Chave (Key File)
+    User: ubuntu
+    Key File: ... .ppk
+
+    Conectar
+
+    Arraste a pasta dos arquivos do nosso servidor flask para dentro filezilla
+    (Só precisa colocar os arquivos necessários (.git, _pycache_, .vscode, não precisa))
+
+
+Para Rodar
+    cd TrabDS
+    sudo python3 server.py
+
+Para deixar rodando depois que fechar a tela
+    Screen -> sudo apt-get install screen
+    screen -l
+    cd TrabDS
+    sudo python3 server.py
+    E pode fechar o terminal do Putty
+
+    Para encerrar o processo do server.py
+        Abrir o putty
+        Mostrar os screen que existem (se quiser): screen -ls 
+        Entra no screen (quando só tem 1): screen -r
